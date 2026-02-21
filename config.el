@@ -40,8 +40,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
+(setq org-directory "~/Dropbox/org/")
+(setq org-journal-file-type 'yearly)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -83,6 +83,11 @@
   (setq lsp-disabled-clients
         '(sorbet-ls rubocop-ls typeprof-ls ruby-ls ruby-lsp)))
 
+;;; TODO:
+;;; Replace shortcuts from dape to dap.
+(after! go-mode
+  (require 'dap-dlv-go))
+
 
                                         ; Bind SPC ! to shell-command
 (map! :leader
@@ -102,10 +107,7 @@
 
 
 (after! org
-  (setq org-agenda-files '("~/Dropbox/org/inbox.org"
-                           "~/Dropbox/org/notes.org"
-                           "~/Dropbox/org/agenda.org"
-                           "~/Dropbox/org/focus.org"))
+ (setq org-agenda-files '("~/Dropbox/org/"))
 
   (setq org-capture-templates '(("t" "Todo [inbox]" entry
                                  (file+headline "~/Dropbox/org/inbox.org" "Tasks")
@@ -117,6 +119,7 @@
   (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 20)
                              ("~/Dropbox/org/focus.org" :level . 1)
                              ("~/Dropbox/org/notes.org" :level . 1)
+                             ("~/Dropbox/org/work.org" :level . 1)
                              ))
   
 
@@ -140,3 +143,4 @@
         :desc "Citre jump to def" "j s" #'citre-jump
         :desc "Citre jump to ref" "j r" #'citre-jump-to-reference
         :desc "Citre update tags" "j u" #'citre-update-project-tags))
+
