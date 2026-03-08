@@ -138,9 +138,11 @@
   ;; Prefer ctags for definitions; use gtags when references are requested.
   (setq citre-use-default-backends t)
 
-  ;; Keybindings (optional)
+  ;; Keybindings
   (map! :leader
-        :desc "Citre jump to def" "j s" #'citre-jump
-        :desc "Citre jump to ref" "j r" #'citre-jump-to-reference
-        :desc "Citre update tags" "j u" #'citre-update-project-tags))
+        :desc "Jump to definition"           "r c d" #'citre-jump
+        :desc "Query jump to definition"     "r c D" #'citre-query-jump
+        :desc "Jump to references"           "r c r" #'citre-jump-to-reference
+        :desc "Query jump to references"     "r c R" #'citre-query-jump-to-reference
+        :desc "Update tags"                  "r c u" #'citre-update-project-tags))
 
